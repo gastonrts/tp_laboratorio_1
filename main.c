@@ -1,29 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
-int ingresarNumero (float* numero);
-int sumar (float numero1, float numero2);
-int restar (float numero1,float numero2);
-int dividir (float numero1, float numero2);
-int multiplicar (float numero1, float numero2);
+#include "calculadora.h"
 int main()
 {
 
 
-	int opcion,calculos,resultados,flag;
-	float numero1,numero2,suma,resta,division,multiplicacion;
+	int opcion,flag;
+	float numero1=0,numero2=0,suma,resta,division,multiplicacion,factorialA,factorialB;
 
 	do
 
 {
 
-		printf("\n1-  Ingresar primer operando.");
-        printf("\n2-  Ingrese segundo operando.");
+		printf("\n1-  Primer operando.\t%.2f",numero1);
+        printf("\n2-  Segundo operando.\t%.2f",numero2);
         printf("\n3-  Calcular todas las operaciones.");
-        printf("\n  a-  Calcular la suma            <x+x>");
-        printf("\n  b-  Calcular la resta           <x-x>");
-        printf("\n  c-  Calcular la division        <x/x>");
-        printf("\n  d-  Calcular la multiplicion    <x*x>");
-        printf("\n  e-  Calcular el factorial       <x!x!>");
+        printf("\n  a-  Calcular la suma            %.2f + %.2f",numero1,numero2);
+        printf("\n  b-  Calcular la resta           %.2f - %.2f",numero1,numero2);
+        printf("\n  c-  Calcular la division        %.2f / %.2f",numero1,numero2);
+        printf("\n  d-  Calcular la multiplicion    %.2f * %.2f",numero1,numero2);
+        printf("\n  e-  Calcular el factorial       %.2f !  %.2f !",numero1,numero2);
         printf("\n4-  Informar los resultados.");
         printf("\n5-  SALIR.\n");
         printf("\nIngrese una opcion del menu:");
@@ -34,44 +30,61 @@ int main()
 	{
 		case 1:
 			ingresarNumero (&numero1);
-			printf("\nSu primero operando es: %.2f",numero1);
 			break;
 		case 2:
             ingresarNumero (&numero2);
-			printf("\nSu segundo operando es: %.2f",numero2);
 			break;
 		case 3://RESOLVEMOS LAS OPERACIONES
             resta = restar (numero1,numero2);
 
             suma = sumar(numero1,numero2);
 
+            multiplicacion = multiplicar (numero1,numero2);
 
-            if (numero2==0)
+            division = dividir (numero1,numero2);
+
+
+            if (numero1>0)
             {
-                printf("\nNO SE PUEDE DIVIDIR POR CERO!!!!!!\n");
+                factorialA = factorizar(numero1);
             }
+
             else
             {
-                division = dividir (numero1,numero2);
+                printf ("\nERROR, NO SE PUEDE SACAR UN FACTORIAL DE UN NUMERO NEGATIVO O EL NUMERO 0\n");
+            }
+            if (numero2>0)
+            {
+                factorialB = factorizar(numero2);
             }
 
-            multiplicacion = multiplicar (numero1,numero2);
+            else
+            {
+                printf ("ERROR, NO SE PUEDE SACAR UN FACTORIAL DE UN NUMERO NEGATIVO.");
+            }
+
+
             break;
         case 4:
-            printf("\nSuma %f" , suma);
+            printf("\nSuma %.2f" ,suma);
 
-            printf("\nResta %f", resta);
+            printf("\nResta %.2f",resta);
 
-            printf("\nDivision %f",division);
+            printf("\nDivision %.2f",division);
 
-            printf("\nMultiplicacion %f", multiplicacion);
+            printf("\nMultiplicacion %.2f",multiplicacion);
+
+            printf("\nFactorial A: %.2f ", factorialA);
+
+            printf("\nFactorial B: %.2f ", factorialB);
+
             break;
         case 5:
             flag = 5;
 			printf ("\n\nCerrando el programa...");
 			break;
         default:
-            printf("\n\nNo es una opcion valida.");
+            printf("\n\nNO ES UNA OPCION VALIDA");
 
 			break;
 	}
@@ -82,50 +95,8 @@ int main()
 	return 0;
 }
 
-int ingresarNumero (float* numero)
-{		printf("Ingrese un numero:");
-        scanf("%f", numero);
-        return numero;
-}
 
-int sumar (float numero1, float numero2)
-{
-        float suma = 0;
-        suma = numero1 + numero2;
 
-        return suma;
-}
 
-int restar (float numero1,float numero2)
-{
-    float resta = 0;
-    resta = numero1 - numero2;
 
-    return resta;
-    }
 
-int dividir (float numero1, float numero2)
-{
-    float division = 0;
-    division = numero1 / numero2;
-
-    return division;
-}
-int multiplicar (float numero1, float numero2)
-{
-    float multiplicacion = 0;
-    multiplicacion = numero1 * numero2;
-
-    return multiplicacion;
-}
-/*
-int sumar (int numero1, int numero2)
-
-{
-	int suma;
-    suma = 0;
-
-    suma = numero1 + numero2;
-
-    return suma;
-}*/
