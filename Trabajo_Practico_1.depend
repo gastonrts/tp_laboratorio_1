@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1536108495 source:c:\users\gastón\desktop\trabajo_práctico\sistemas-de-procesamiento-de-datos\trabajo_practico_1\main.c
+	<stdio.h>
+	<stdlib.h>
+
